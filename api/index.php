@@ -14,672 +14,623 @@
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/4.1/examples/blog/blog.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
-      .card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin-bottom: 2rem;
-        border: none;
-        border-radius: 12px;
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --success-color: #27ae60;
+        --text-dark: #2c3e50;
+        --text-light: #7f8c8d;
+        --bg-light: #f8f9fa;
+        --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        --shadow-hover: 0 10px 30px rgba(0,0,0,0.2);
+      }
+
+      body {
+        font-family: 'Roboto', sans-serif;
+        color: var(--text-dark);
+        background-color: #fff;
+      }
+
+      /* Header mejorado */
+      .blog-header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+        padding: 2rem 0 !important;
+        margin-bottom: 3rem;
+        box-shadow: var(--shadow);
+      }
+
+      .blog-header-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: white !important;
+        text-decoration: none;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+      }
+
+      .blog-header-logo:hover {
+        transform: scale(1.05);
+        text-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+      }
+
+      .blog-header-logo i {
+        margin-right: 15px;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+      }
+
+      /* Portada Principal mejorada */
+      .jumbotron {
+        border-radius: 15px !important;
         overflow: hidden;
+        margin-bottom: 4rem !important;
+        box-shadow: var(--shadow-hover);
+        position: relative;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
       }
+
+      .jumbotron::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.7) 100%);
+        z-index: 1;
+      }
+
+      .jumbotron .col-md-12 {
+        position: relative;
+        z-index: 2;
+      }
+
+      .jumbotron h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+
+      .jumbotron .lead {
+        font-size: 1.3rem;
+        line-height: 1.7;
+        font-weight: 300;
+      }
+
+      .jumbotron a {
+        display: inline-block;
+        padding: 12px 30px;
+        background: var(--accent-color);
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-decoration: none !important;
+      }
+
+      .jumbotron a:hover {
+        background: #c0392b;
+        transform: translateX(10px);
+        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+      }
+
+      /* Sección de noticias mejorada */
+      .news-section {
+        margin-bottom: 5rem;
+      }
+
+      .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        padding-bottom: 15px;
+        border-bottom: 3px solid var(--secondary-color);
+        position: relative;
+      }
+
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100px;
+        height: 3px;
+        background: var(--accent-color);
+      }
+
+      /* Tarjetas de noticias mejoradas */
+      .card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--shadow);
+        height: 100%;
+        background: white;
+      }
+
       .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 35px rgba(0,0,0,0.15) !important;
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
       }
+
+      .news-image {
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+        transition: transform 0.4s ease;
+      }
+
+      .card:hover .news-image {
+        transform: scale(1.1);
+      }
+
+      .card-body {
+        padding: 2rem;
+      }
+
+      .category-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+
       .category-icon {
         font-size: 1.1em;
         margin-right: 8px;
       }
-      .news-image {
-        height: 220px;
-        object-fit: cover;
-        width: 100%;
+
+      .badge-internacional {
+        background: linear-gradient(135deg, #3498db, #2980b9);
+        color: white;
       }
-      .author-avatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        margin-right: 10px;
-        border: 2px solid #f8f9fa;
+
+      .badge-nacional {
+        background: linear-gradient(135deg, #27ae60, #229954);
+        color: white;
       }
-      .jumbotron {
-        background-size: cover;
-        background-position: center;
-        margin-bottom: 3rem;
-        border-radius: 16px;
+
+      .badge-deportes {
+        background: linear-gradient(135deg, #e67e22, #d35400);
+        color: white;
       }
-      .read-time {
-        font-size: 0.85em;
-        color: #6c757d;
-        background: #f8f9fa;
-        padding: 2px 8px;
-        border-radius: 12px;
+
+      .badge-tecnologia {
+        background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        color: white;
       }
-      .news-section {
-        margin-bottom: 4rem;
-        padding: 2rem 0;
+
+      .badge-economia {
+        background: linear-gradient(135deg, #f39c12, #e67e22);
+        color: white;
       }
-      .section-title {
+
+      .badge-entretenimiento {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+        color: white;
+      }
+
+      .card h3 {
+        font-family: 'Playfair Display', serif;
         font-size: 1.5rem;
         font-weight: 700;
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 3px solid #007bff;
-        color: #2c3e50;
-      }
-      .card-body {
-        padding: 1.5rem;
-      }
-      .card-title {
-        font-size: 1.3rem;
         line-height: 1.4;
         margin-bottom: 1rem;
-        font-weight: 600;
       }
-      .card-text {
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-        color: #555;
+
+      .card h3 a {
+        color: var(--text-dark);
+        text-decoration: none;
+        transition: color 0.3s ease;
       }
-      .news-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #e9ecef;
+
+      .card h3 a:hover {
+        color: var(--secondary-color);
       }
-      .category-badge {
-        font-size: 0.8rem;
-        font-weight: 600;
-        padding: 6px 12px;
-        border-radius: 20px;
-      }
+
       .author-info {
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
+        padding: 10px 0;
+        border-top: 1px solid #ecf0f1;
+        border-bottom: 1px solid #ecf0f1;
       }
-      .btn-outline-custom {
-        border-width: 2px;
+
+      .author-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 12px;
+        border: 2px solid var(--secondary-color);
+      }
+
+      .author-details {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .author-name {
         font-weight: 600;
-        padding: 8px 20px;
-        border-radius: 25px;
+        color: var(--text-dark);
+        font-size: 0.9rem;
+      }
+
+      .publish-date {
+        font-size: 0.8rem;
+        color: var(--text-light);
+      }
+
+      .card-text {
+        color: var(--text-light);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .btn-read-more {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
         transition: all 0.3s ease;
+        border: 2px solid;
       }
-      .news-grid {
-        gap: 2rem;
+
+      .btn-read-more i {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
       }
-      .card-footer-custom {
-        background: transparent;
-        border-top: 1px solid #e9ecef;
-        padding: 1rem 1.5rem;
+
+      .btn-read-more:hover i {
+        transform: translateX(5px);
+      }
+
+      .btn-internacional {
+        color: #3498db;
+        border-color: #3498db;
+      }
+
+      .btn-internacional:hover {
+        background: #3498db;
+        color: white;
+      }
+
+      .btn-nacional {
+        color: #27ae60;
+        border-color: #27ae60;
+      }
+
+      .btn-nacional:hover {
+        background: #27ae60;
+        color: white;
+      }
+
+      .btn-deportes {
+        color: #e67e22;
+        border-color: #e67e22;
+      }
+
+      .btn-deportes:hover {
+        background: #e67e22;
+        color: white;
+      }
+
+      .btn-tecnologia {
+        color: #9b59b6;
+        border-color: #9b59b6;
+      }
+
+      .btn-tecnologia:hover {
+        background: #9b59b6;
+        color: white;
+      }
+
+      .btn-economia {
+        color: #f39c12;
+        border-color: #f39c12;
+      }
+
+      .btn-economia:hover {
+        background: #f39c12;
+        color: white;
+      }
+
+      .btn-entretenimiento {
+        color: #e74c3c;
+        border-color: #e74c3c;
+      }
+
+      .btn-entretenimiento:hover {
+        background: #e74c3c;
+        color: white;
+      }
+
+      /* Footer mejorado */
+      .blog-footer {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+        color: white;
+        padding: 3rem 0 !important;
+        margin-top: 5rem !important;
+      }
+
+      .blog-footer p {
+        margin-bottom: 1rem;
+        color: rgba(255,255,255,0.9);
+      }
+
+      .blog-footer a {
+        color: rgba(255,255,255,0.8);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        margin: 0 10px;
+      }
+
+      .blog-footer a:hover {
+        color: white;
+        text-decoration: underline;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .jumbotron h1 {
+          font-size: 2rem;
+        }
+        
+        .blog-header-logo {
+          font-size: 1.5rem;
+        }
+
+        .news-section {
+          margin-bottom: 3rem;
+        }
+
+        .card-body {
+          padding: 1.5rem;
+        }
       }
     </style>
   </head>
 
   <body>
-
-    <div class="container">
-      <header class="blog-header py-4">
-        <div class="row flex-nowrap justify-content-between align-items-center">
+    <!-- Header -->
+    <header class="blog-header">
+      <div class="container">
+        <div class="row">
           <div class="col-12 text-center">
-            <a class="blog-header-logo text-dark" href="#" style="font-size: 2.5rem;">
-              <i class="fas fa-newspaper me-3"></i>PANTA PISCOCHE JOSÉ DIEGO
+            <a class="blog-header-logo" href="#">
+              <i class="fas fa-newspaper"></i>PANTA PISCOCHE JOSÉ DIEGO
             </a>
-            <p class="text-muted mt-2">Información confiable para una sociedad informada</p>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
 
+    <div class="container">
       <!-- Portada Principal -->
-      <?php include("secciones/portada.php"); ?>
-      <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark mb-5" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1585829365295-ab7cd400d7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover;">
-        <div class="col-md-12 px-0">
-          <h1 class="display-4 font-italic mb-4">
-            <?php echo $portada["titulo"]; ?>
+      <div class="jumbotron p-4 p-md-5 text-white" style="background-image: url('https://images.unsplash.com/photo-1585829365295-ab7cd400d7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
+        <div class="col-md-10 mx-auto px-0">
+          <h1 class="display-4">
+            <i class="fas fa-star text-warning"></i> IA Transforma la Medicina en 2025
           </h1>
-          <p class="lead my-4" style="font-size: 1.3rem;">
-            <?php echo $portada["resumen"]; ?>
+          <p class="lead my-4">
+            Los nuevos sistemas de inteligencia artificial están revolucionando el diagnóstico médico, permitiendo detectar enfermedades con una precisión del 98% antes de que aparezcan los primeros síntomas.
           </p>
           <p class="lead mb-0">
-            <a href="<?php echo $portada['enlace']; ?>" class="btn btn-light btn-lg px-4">
-              <i class="fas fa-book-open me-2"></i>Continuar leyendo
+            <a href="#" class="text-white font-weight-bold">
+              Continuar leyendo <i class="fas fa-arrow-right"></i>
             </a>
           </p>
         </div>
       </div>
 
-      <!-- Sección 1: Internacional y Nacional -->
+      <!-- Sección Internacional y Nacional -->
       <div class="news-section">
-        <h2 class="section-title text-center">
-          <i class="fas fa-globe-americas me-2"></i>Noticias Principales
+        <h2 class="section-title">
+          <i class="fas fa-globe-americas text-primary"></i> Actualidad Mundial
         </h2>
-        <?php
-          include("secciones/internacional.php");
-          include("secciones/nacional.php");
-        ?>
-        <div class="row news-grid">
-          <!-- Tarjeta Internacional -->
-          <div class="col-md-6">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Huracán Melissa">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-primary text-white">
-                    <i class="fas fa-globe-americas category-icon"></i>Internacional
-                  </span>
-                  <small class="text-muted"><?php echo $internacional["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $internacional['enlace']; ?>">
-                    <?php echo $internacional["titulo"]; ?>
-                  </a>
+        <div class="row">
+          <!-- Internacional -->
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <img class="news-image" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Huracán Melissa">
+              <div class="card-body">
+                <span class="category-badge badge-internacional">
+                  <i class="fas fa-globe-americas category-icon"></i>Internacional
+                </span>
+                <h3>
+                  <a href="#">Huracán Melissa Categoría 5 Amenaza el Caribe</a>
                 </h3>
                 <div class="author-info">
                   <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $internacional["autor"]; ?></div>
-                    <small class="text-muted">Corresponsal Internacional</small>
+                  <div class="author-details">
+                    <span class="author-name">Juan Pérez</span>
+                    <span class="publish-date">28 Oct 2025</span>
                   </div>
                 </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $internacional["resumen"]; ?>
+                <p class="card-text">
+                  El huracán Melissa se intensificó a categoría 5 con vientos de 280 km/h. Autoridades evacúan zonas costeras mientras se aproxima a las islas del Caribe oriental.
                 </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $internacional['enlace']; ?>" class="btn btn-outline-primary btn-outline-custom">
-                      <i class="fas fa-newspaper me-2"></i>Leer más
-                    </a>
-                    <span class="read-time">4 min lectura</span>
-                  </div>
-                </div>
+                <a href="#" class="btn-read-more btn-internacional">
+                  Leer más <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Tarjeta Nacional -->
-          <div class="col-md-6">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1553909489-cd47e0907980?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Protestas en Perú">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-success text-white">
-                    <i class="fas fa-flag category-icon"></i>Nacional
-                  </span>
-                  <small class="text-muted"><?php echo $nacional["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $nacional['enlace']; ?>">
-                    <?php echo $nacional["titulo"]; ?>
-                  </a>
+          <!-- Nacional -->
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <img class="news-image" src="https://images.unsplash.com/photo-1553909489-cd47e0907980?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Protestas Perú">
+              <div class="card-body">
+                <span class="category-badge badge-nacional">
+                  <i class="fas fa-flag category-icon"></i>Nacional
+                </span>
+                <h3>
+                  <a href="#">Protestas Masivas en Lima por Reforma Educativa</a>
                 </h3>
                 <div class="author-info">
                   <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $nacional["autor"]; ?></div>
-                    <small class="text-muted">Periodista Nacional</small>
+                  <div class="author-details">
+                    <span class="author-name">María González</span>
+                    <span class="publish-date">28 Oct 2025</span>
                   </div>
                 </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $nacional["resumen"]; ?>
+                <p class="card-text">
+                  Miles de maestros y estudiantes marcharon por las principales avenidas de Lima exigiendo mayores inversiones en educación y mejores condiciones laborales para el sector.
                 </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $nacional['enlace']; ?>" class="btn btn-outline-success btn-outline-custom">
-                      <i class="fas fa-newspaper me-2"></i>Leer más
-                    </a>
-                    <span class="read-time">3 min lectura</span>
-                  </div>
-                </div>
+                <a href="#" class="btn-read-more btn-nacional">
+                  Leer más <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Sección 2: Economía y Opinión -->
+      <!-- Sección Deportes y Tecnología -->
       <div class="news-section">
-        <h2 class="section-title text-center">
-          <i class="fas fa-chart-line me-2"></i>Economía y Análisis
+        <h2 class="section-title">
+          <i class="fas fa-futbol text-warning"></i> Deportes y Tecnología
         </h2>
-        <?php
-          include("secciones/economia.php");
-          include("secciones/opinion.php");
-        ?>
-        <div class="row news-grid">
-          <div class="col-md-6">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mercado financiero">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-secondary text-white">
-                    <i class="fas fa-chart-line category-icon"></i>Economía
-                  </span>
-                  <small class="text-muted"><?php echo $economia["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $economia['enlace']; ?>">
-                    <?php echo $economia["titulo"]; ?>
-                  </a>
-                </h3>
-                <div class="author-info">
-                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $economia["autor"]; ?></div>
-                    <small class="text-muted">Analista Económico</small>
-                  </div>
-                </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $economia["resumen"]; ?>
-                </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $economia['enlace']; ?>" class="btn btn-outline-secondary btn-outline-custom">
-                      <i class="fas fa-newspaper me-2"></i>Leer más
-                    </a>
-                    <span class="read-time">5 min lectura</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Análisis educativo">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-warning text-dark">
-                    <i class="fas fa-comment category-icon"></i>Opinión
-                  </span>
-                  <small class="text-muted"><?php echo $opinion["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $opinion['enlace']; ?>">
-                    <?php echo $opinion["titulo"]; ?>
-                  </a>
-                </h3>
-                <div class="author-info">
-                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $opinion["autor"]; ?></div>
-                    <small class="text-muted">Columnista</small>
-                  </div>
-                </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $opinion["resumen"]; ?>
-                </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $opinion['enlace']; ?>" class="btn btn-outline-warning btn-outline-custom">
-                      <i class="fas fa-newspaper me-2"></i>Leer más
-                    </a>
-                    <span class="read-time">6 min lectura</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sección 3: Tecnología y Ciencia -->
-      <div class="news-section">
-        <h2 class="section-title text-center">
-          <i class="fas fa-microchip me-2"></i>Ciencia y Tecnología
-        </h2>
-        <?php
-          include("secciones/tecnologia.php");
-          include("secciones/ciencia.php");
-        ?>
-        <div class="row news-grid">
-          <div class="col-md-6">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="App móvil">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-primary text-white">
-                    <i class="fas fa-microchip category-icon"></i>Tecnología
-                  </span>
-                  <small class="text-muted"><?php echo $tecnologia["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $tecnologia['enlace']; ?>">
-                    <?php echo $tecnologia["titulo"]; ?>
-                  </a>
-                </h3>
-                <div class="author-info">
-                  <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $tecnologia["autor"]; ?></div>
-                    <small class="text-muted">Especialista en Tecnología</small>
-                  </div>
-                </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $tecnologia["resumen"]; ?>
-                </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $tecnologia['enlace']; ?>" class="btn btn-outline-primary btn-outline-custom">
-                      <i class="fas fa-newspaper me-2"></i>Leer más
-                    </a>
-                    <span class="read-time">4 min lectura</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Orquídea amazónica">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-success text-white">
-                    <i class="fas fa-flask category-icon"></i>Ciencia
-                  </span>
-                  <small class="text-muted"><?php echo $ciencia["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $ciencia['enlace']; ?>">
-                    <?php echo $ciencia["titulo"]; ?>
-                  </a>
-                </h3>
-                <div class="author-info">
-                  <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $ciencia["autor"]; ?></div>
-                    <small class="text-muted">Investigador Científico</small>
-                  </div>
-                </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $ciencia["resumen"]; ?>
-                </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $ciencia['enlace']; ?>" class="btn btn-outline-success btn-outline-custom">
-                      <i class="fas fa-newspaper me-2"></i>Leer más
-                    </a>
-                    <span class="read-time">3 min lectura</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sección 4: Cultura y Entretenimiento -->
-      <div class="news-section">
-        <h2 class="section-title text-center">
-          <i class="fas fa-theater-masks me-2"></i>Cultura y Entretenimiento
-        </h2>
-        <?php
-          include("secciones/cultura.php");
-          include("secciones/gente.php");
-          include("secciones/television.php");
-        ?>
-        <div class="row news-grid">
-          <div class="col-md-4">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Festival teatro">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-secondary text-white">
-                    <i class="fas fa-theater-masks category-icon"></i>Cultura
-                  </span>
-                  <small class="text-muted"><?php echo $cultura["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $cultura['enlace']; ?>">
-                    <?php echo $cultura["titulo"]; ?>
-                  </a>
-                </h3>
-                <div class="author-info">
-                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $cultura["autor"]; ?></div>
-                    <small class="text-muted">Crítico Cultural</small>
-                  </div>
-                </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $cultura["resumen"]; ?>
-                </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $cultura['enlace']; ?>" class="btn btn-outline-secondary btn-outline-custom">
-                      Leer más
-                    </a>
-                    <span class="read-time">4 min lectura</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chef peruana">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-warning text-dark">
-                    <i class="fas fa-user-friends category-icon"></i>Gente
-                  </span>
-                  <small class="text-muted"><?php echo $gente["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $gente['enlace']; ?>">
-                    <?php echo $gente["titulo"]; ?>
-                  </a>
-                </h3>
-                <div class="author-info">
-                  <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $gente["autor"]; ?></div>
-                    <small class="text-muted">Reportero de Espectáculos</small>
-                  </div>
-                </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $gente["resumen"]; ?>
-                </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $gente['enlace']; ?>" class="btn btn-outline-warning btn-outline-custom">
-                      Leer más
-                    </a>
-                    <span class="read-time">3 min lectura</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Serie peruana">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-info text-white">
-                    <i class="fas fa-tv category-icon"></i>Televisión
-                  </span>
-                  <small class="text-muted"><?php echo $television["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $television['enlace']; ?>">
-                    <?php echo $television["titulo"]; ?>
-                  </a>
-                </h3>
-                <div class="author-info">
-                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $television["autor"]; ?></div>
-                    <small class="text-muted">Crítico de TV</small>
-                  </div>
-                </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $television["resumen"]; ?>
-                </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $television['enlace']; ?>" class="btn btn-outline-info btn-outline-custom">
-                      Leer más
-                    </a>
-                    <span class="read-time">4 min lectura</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sección 5: Deportes y Sociedad -->
-      <div class="news-section">
-        <h2 class="section-title text-center">
-          <i class="fas fa-futbol me-2"></i>Deportes y Sociedad
-        </h2>
-        <?php
-          include("secciones/deportes.php");
-          include("secciones/sociedad.php");
-          include("secciones/video.php");
-        ?>
-        <div class="row news-grid">
-          <div class="col-md-4">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Selección peruana">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-primary text-white">
-                    <i class="fas fa-futbol category-icon"></i>Deportes
-                  </span>
-                  <small class="text-muted"><?php echo $deportes["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $deportes['enlace']; ?>">
-                    <?php echo $deportes["titulo"]; ?>
-                  </a>
+        <div class="row">
+          <!-- Deportes -->
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <img class="news-image" src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Deportes">
+              <div class="card-body">
+                <span class="category-badge badge-deportes">
+                  <i class="fas fa-futbol category-icon"></i>Deportes
+                </span>
+                <h3>
+                  <a href="#">Perú Clasifica al Mundial 2026 tras Victoria Histórica</a>
                 </h3>
                 <div class="author-info">
                   <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $deportes["autor"]; ?></div>
-                    <small class="text-muted">Periodista Deportivo</small>
+                  <div class="author-details">
+                    <span class="author-name">Carlos Ruiz</span>
+                    <span class="publish-date">27 Oct 2025</span>
                   </div>
                 </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $deportes["resumen"]; ?>
+                <p class="card-text">
+                  La selección peruana logró su pase al Mundial 2026 al vencer 3-1 a Colombia en Lima. Paolo Guerrero anotó dos goles en su partido despedida con la blanquirroja.
                 </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $deportes['enlace']; ?>" class="btn btn-outline-primary btn-outline-custom">
-                      Leer más
-                    </a>
-                    <span class="read-time">5 min lectura</span>
-                  </div>
-                </div>
+                <a href="#" class="btn-read-more btn-deportes">
+                  Leer más <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Comunidad Awajún">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-success text-white">
-                    <i class="fas fa-users category-icon"></i>Sociedad
-                  </span>
-                  <small class="text-muted"><?php echo $sociedad["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $sociedad['enlace']; ?>">
-                    <?php echo $sociedad["titulo"]; ?>
-                  </a>
-                </h3>
-                <div class="author-info">
-                  <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $sociedad["autor"]; ?></div>
-                    <small class="text-muted">Reportero Social</small>
-                  </div>
-                </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $sociedad["resumen"]; ?>
-                </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $sociedad['enlace']; ?>" class="btn btn-outline-success btn-outline-custom">
-                      Leer más
-                    </a>
-                    <span class="read-time">4 min lectura</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card shadow-sm h-100">
-              <img class="news-image" src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Video viral">
-              <div class="card-body d-flex flex-column">
-                <div class="news-meta">
-                  <span class="category-badge bg-danger text-white">
-                    <i class="fas fa-video category-icon"></i>Video Viral
-                  </span>
-                  <small class="text-muted"><?php echo $video["fecha"]; ?></small>
-                </div>
-                <h3 class="card-title">
-                  <a class="text-dark text-decoration-none" href="<?php echo $video['enlace']; ?>">
-                    <?php echo $video["titulo"]; ?>
-                  </a>
+
+          <!-- Tecnología -->
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <img class="news-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tecnología">
+              <div class="card-body">
+                <span class="category-badge badge-tecnologia">
+                  <i class="fas fa-microchip category-icon"></i>Tecnología
+                </span>
+                <h3>
+                  <a href="#">Apple Presenta iPhone 17 con Batería de 7 Días</a>
                 </h3>
                 <div class="author-info">
                   <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
-                  <div>
-                    <div class="font-weight-bold"><?php echo $video["autor"]; ?></div>
-                    <small class="text-muted">Reportero Digital</small>
+                  <div class="author-details">
+                    <span class="author-name">Ana Torres</span>
+                    <span class="publish-date">26 Oct 2025</span>
                   </div>
                 </div>
-                <p class="card-text flex-grow-1">
-                  <?php echo $video["resumen"]; ?>
+                <p class="card-text">
+                  El nuevo iPhone 17 rompe récords con su batería de grafeno que dura una semana completa. Incluye procesador cuántico y cámaras con IA de última generación.
                 </p>
-                <div class="card-footer-custom text-center">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="<?php echo $video['enlace']; ?>" class="btn btn-outline-danger btn-outline-custom">
-                      Ver video
-                    </a>
-                    <span class="read-time">2 min vista</span>
-                  </div>
-                </div>
+                <a href="#" class="btn-read-more btn-tecnologia">
+                  Leer más <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Newsletter Section -->
+      <!-- Sección Economía y Entretenimiento -->
       <div class="news-section">
-        <div class="row justify-content-center">
-          <div class="col-md-8">
-            <div class="card bg-gradient-primary text-white border-0 shadow-lg">
-              <div class="card-body text-center py-5 px-4">
-                <h3 class="card-title mb-3">
-                  <i class="fas fa-paper-plane me-2"></i>Mantente Informado
+        <h2 class="section-title">
+          <i class="fas fa-chart-line text-success"></i> Economía y Entretenimiento
+        </h2>
+        <div class="row">
+          <!-- Economía -->
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <img class="news-image" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Economía">
+              <div class="card-body">
+                <span class="category-badge badge-economia">
+                  <i class="fas fa-chart-line category-icon"></i>Economía
+                </span>
+                <h3>
+                  <a href="#">Bitcoin Alcanza los $150,000 en Mercado Alcista</a>
                 </h3>
-                <p class="card-text mb-4" style="font-size: 1.1rem;">
-                  Suscríbete a nuestro newsletter y recibe las noticias más importantes del día directamente en tu correo
-                </p>
-                <div class="row justify-content-center">
-                  <div class="col-md-8">
-                    <div class="input-group input-group-lg">
-                      <input type="email" class="form-control border-0" placeholder="Tu correo electrónico" style="border-radius: 25px 0 0 25px;">
-                      <div class="input-group-append">
-                        <button class="btn btn-light text-primary font-weight-bold px-4" type="button" style="border-radius: 0 25px 25px 0;">
-                          Suscribirse
-                        </button>
-                      </div>
-                    </div>
+                <div class="author-info">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
+                  <div class="author-details">
+                    <span class="author-name">Luis Mendoza</span>
+                    <span class="publish-date">25 Oct 2025</span>
                   </div>
                 </div>
+                <p class="card-text">
+                  La criptomoneda líder supera todas las expectativas alcanzando un nuevo máximo histórico. Expertos predicen que podría llegar a $200,000 antes de fin de año.
+                </p>
+                <a href="#" class="btn-read-more btn-economia">
+                  Leer más <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entretenimiento -->
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <img class="news-image" src="https://images.unsplash.com/photo-1574267432644-f2f75f3c6e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Entretenimiento">
+              <div class="card-body">
+                <span class="category-badge badge-entretenimiento">
+                  <i class="fas fa-film category-icon"></i>Entretenimiento
+                </span>
+                <h3>
+                  <a href="#">Netflix Anuncia Serie sobre Historia de Perú</a>
+                </h3>
+                <div class="author-info">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
+                  <div class="author-details">
+                    <span class="author-name">Sofía Vargas</span>
+                    <span class="publish-date">24 Oct 2025</span>
+                  </div>
+                </div>
+                <p class="card-text">
+                  La plataforma de streaming producirá una megaserie de 10 episodios sobre los Incas, con un presupuesto de $80 millones. El rodaje comenzará en Cusco en 2026.
+                </p>
+                <a href="#" class="btn-read-more btn-entretenimiento">
+                  Leer más <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -689,108 +640,25 @@
     </div>
 
     <!-- Footer -->
-    <footer class="blog-footer bg-dark text-white py-5 mt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 mb-4">
-            <h5 class="mb-3">
-              <i class="fas fa-newspaper me-2"></i>NOTICIAS SON NOTICIAS
-            </h5>
-            <p class="text-muted mb-3">
-              El portal informativo más confiable del Perú. Actualidad nacional e internacional las 24 horas.
-            </p>
-            <div class="social-links">
-              <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="#" class="btn btn-outline-light btn-sm rounded-circle">
-                <i class="fab fa-youtube"></i>
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-3 mb-4">
-            <h6 class="mb-3">Secciones</h6>
-            <ul class="list-unstyled">
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Nacional</a></li>
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Internacional</a></li>
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Economía</a></li>
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Deportes</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-2 col-md-3 mb-4">
-            <h6 class="mb-3">Empresa</h6>
-            <ul class="list-unstyled">
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Quiénes Somos</a></li>
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Contacto</a></li>
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Trabaja con Nosotros</a></li>
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Anunciarse</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-2 col-md-3 mb-4">
-            <h6 class="mb-3">Legal</h6>
-            <ul class="list-unstyled">
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Términos y Condiciones</a></li>
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Política de Privacidad</a></li>
-              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Cookies</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-2 col-md-3 mb-4">
-            <h6 class="mb-3">Contacto</h6>
-            <ul class="list-unstyled text-muted">
-              <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Lima, Perú</li>
-              <li class="mb-2"><i class="fas fa-phone me-2"></i>+51 123 456 789</li>
-              <li class="mb-2"><i class="fas fa-envelope me-2"></i>info@noticiassonnoticias.com</li>
-            </ul>
-          </div>
-        </div>
-        <hr class="bg-secondary my-4">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <p class="mb-0 text-muted">&copy; 2025 NOTICIAS SON NOTICIAS. Todos los derechos reservados.</p>
-          </div>
-          <div class="col-md-6 text-md-end">
-            <p class="mb-0 text-muted">Desarrollado con <i class="fas fa-heart text-danger"></i> para el Perú</p>
-          </div>
-        </div>
+    <footer class="blog-footer">
+      <div class="container text-center">
+        <p style="font-size: 1.1rem; font-weight: 500;">
+          <i class="fas fa-newspaper"></i> Noticias SON Noticias 2025
+        </p>
+        <p style="opacity: 0.9;">Portal informativo líder en Perú</p>
+        <p class="mb-0">
+          <a href="#"><i class="fas fa-home"></i> Inicio</a> | 
+          <a href="#"><i class="fas fa-envelope"></i> Contacto</a> | 
+          <a href="#"><i class="fas fa-shield-alt"></i> Privacidad</a>
+        </p>
+        <p style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
+          © 2025 Todos los derechos reservados
+        </p>
       </div>
     </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-      // Efecto de contador de visitas (simulado)
-      document.addEventListener('DOMContentLoaded', function() {
-        // Simular contador de lectores en línea
-        const onlineReaders = Math.floor(Math.random() * 500) + 1500;
-        const onlineElement = document.createElement('div');
-        onlineElement.className = 'position-fixed bottom-0 end-0 m-3 p-3 bg-primary text-white rounded shadow-lg';
-        onlineElement.innerHTML = `
-          <div class="d-flex align-items-center">
-            <i class="fas fa-eye me-2"></i>
-            <div>
-              <div class="font-weight-bold">${onlineReaders}</div>
-              <small>lectores en línea</small>
-            </div>
-          </div>
-        `;
-        document.body.appendChild(onlineElement);
-        
-        // Smooth scroll para enlaces internos
-        $('a[href^="#"]').on('click', function(event) {
-          event.preventDefault();
-          $('html, body').animate({
-            scrollTop: $($.attr(this, 'href')).offset().top
-          }, 500);
-        });
-      });
-    </script>
   </body>
 </html>
