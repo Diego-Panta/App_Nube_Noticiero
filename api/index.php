@@ -656,6 +656,253 @@
         </div>
       </div>
 
+      <!-- Sección 6: Formación y Empleo -->
+      <div class="news-section">
+        <h2 class="section-title text-center">
+          <i class="fas fa-graduation-cap me-2"></i>Formación y Empleo
+        </h2>
+        <?php
+          include("secciones/formacion.php");
+          include("secciones/empleo.php");
+        ?>
+        <div class="row news-grid">
+          <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+              <img class="news-image" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Programa formación">
+              <div class="card-body d-flex flex-column">
+                <div class="news-meta">
+                  <span class="category-badge bg-info text-white">
+                    <i class="fas fa-graduation-cap category-icon"></i>Formación
+                  </span>
+                  <small class="text-muted"><?php echo $formacion["fecha"]; ?></small>
+                </div>
+                <h3 class="card-title">
+                  <a class="text-dark text-decoration-none" href="<?php echo $formacion['enlace']; ?>">
+                    <?php echo $formacion["titulo"]; ?>
+                  </a>
+                </h3>
+                <div class="author-info">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
+                  <div>
+                    <div class="font-weight-bold"><?php echo $formacion["autor"]; ?></div>
+                    <small class="text-muted">Especialista en Educación</small>
+                  </div>
+                </div>
+                <p class="card-text flex-grow-1">
+                  <?php echo $formacion["resumen"]; ?>
+                </p>
+                <div class="card-footer-custom text-center">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <a href="<?php echo $formacion['enlace']; ?>" class="btn btn-outline-info btn-outline-custom">
+                      Leer más
+                    </a>
+                    <span class="read-time">4 min lectura</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+              <img class="news-image" src="https://images.unsplash.com/photo-1551836026-d5c88ac5d691?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Empleo tecnología">
+              <div class="card-body d-flex flex-column">
+                <div class="news-meta">
+                  <span class="category-badge bg-dark text-white">
+                    <i class="fas fa-briefcase category-icon"></i>Empleo
+                  </span>
+                  <small class="text-muted"><?php echo $empleo["fecha"]; ?></small>
+                </div>
+                <h3 class="card-title">
+                  <a class="text-dark text-decoration-none" href="<?php echo $empleo['enlace']; ?>">
+                    <?php echo $empleo["titulo"]; ?>
+                  </a>
+                </h3>
+                <div class="author-info">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
+                  <div>
+                    <div class="font-weight-bold"><?php echo $empleo["autor"]; ?></div>
+                    <small class="text-muted">Analista Laboral</small>
+                  </div>
+                </div>
+                <p class="card-text flex-grow-1">
+                  <?php echo $empleo["resumen"]; ?>
+                </p>
+                <div class="card-footer-custom text-center">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <a href="<?php echo $empleo['enlace']; ?>" class="btn btn-outline-dark btn-outline-custom">
+                      Leer más
+                    </a>
+                    <span class="read-time">3 min lectura</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 7: Tecnología Avanzada -->
+      <div class="news-section">
+        <h2 class="section-title text-center">
+          <i class="fas fa-server me-2"></i>Tecnología Avanzada
+        </h2>
+        <?php
+          include("secciones/openstack.php");
+          include("secciones/git.php");
+          include("secciones/contenedores.php");
+          include("secciones/openshift.php");
+        ?>
+        <div class="row news-grid">
+          <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+              <img class="news-image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Infraestructura cloud">
+              <div class="card-body d-flex flex-column">
+                <div class="news-meta">
+                  <span class="category-badge bg-primary text-white">
+                    <i class="fas fa-cloud category-icon"></i>OpenStack
+                  </span>
+                  <small class="text-muted"><?php echo $openstack["fecha"]; ?></small>
+                </div>
+                <h3 class="card-title">
+                  <a class="text-dark text-decoration-none" href="<?php echo $openstack['enlace']; ?>">
+                    <?php echo $openstack["titulo"]; ?>
+                  </a>
+                </h3>
+                <div class="author-info">
+                  <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
+                  <div>
+                    <div class="font-weight-bold"><?php echo $openstack["autor"]; ?></div>
+                    <small class="text-muted">Arquitecto Cloud</small>
+                  </div>
+                </div>
+                <p class="card-text flex-grow-1">
+                  <?php echo $openstack["resumen"]; ?>
+                </p>
+                <div class="card-footer-custom text-center">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <a href="<?php echo $openstack['enlace']; ?>" class="btn btn-outline-primary btn-outline-custom">
+                      Leer más
+                    </a>
+                    <span class="read-time">5 min lectura</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+              <img class="news-image" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Desarrollo software">
+              <div class="card-body d-flex flex-column">
+                <div class="news-meta">
+                  <span class="category-badge bg-success text-white">
+                    <i class="fab fa-git-alt category-icon"></i>Git
+                  </span>
+                  <small class="text-muted"><?php echo $git["fecha"]; ?></small>
+                </div>
+                <h3 class="card-title">
+                  <a class="text-dark text-decoration-none" href="<?php echo $git['enlace']; ?>">
+                    <?php echo $git["titulo"]; ?>
+                  </a>
+                </h3>
+                <div class="author-info">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
+                  <div>
+                    <div class="font-weight-bold"><?php echo $git["autor"]; ?></div>
+                    <small class="text-muted">Desarrollador Senior</small>
+                  </div>
+                </div>
+                <p class="card-text flex-grow-1">
+                  <?php echo $git["resumen"]; ?>
+                </p>
+                <div class="card-footer-custom text-center">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <a href="<?php echo $git['enlace']; ?>" class="btn btn-outline-success btn-outline-custom">
+                      Leer más
+                    </a>
+                    <span class="read-time">4 min lectura</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row news-grid mt-4">
+          <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+              <img class="news-image" src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Contenedores docker">
+              <div class="card-body d-flex flex-column">
+                <div class="news-meta">
+                  <span class="category-badge bg-secondary text-white">
+                    <i class="fab fa-docker category-icon"></i>Contenedores
+                  </span>
+                  <small class="text-muted"><?php echo $contenedores["fecha"]; ?></small>
+                </div>
+                <h3 class="card-title">
+                  <a class="text-dark text-decoration-none" href="<?php echo $contenedores['enlace']; ?>">
+                    <?php echo $contenedores["titulo"]; ?>
+                  </a>
+                </h3>
+                <div class="author-info">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
+                  <div>
+                    <div class="font-weight-bold"><?php echo $contenedores["autor"]; ?></div>
+                    <small class="text-muted">DevOps Engineer</small>
+                  </div>
+                </div>
+                <p class="card-text flex-grow-1">
+                  <?php echo $contenedores["resumen"]; ?>
+                </p>
+                <div class="card-footer-custom text-center">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <a href="<?php echo $contenedores['enlace']; ?>" class="btn btn-outline-secondary btn-outline-custom">
+                      Leer más
+                    </a>
+                    <span class="read-time">6 min lectura</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+              <img class="news-image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Plataforma OpenShift">
+              <div class="card-body d-flex flex-column">
+                <div class="news-meta">
+                  <span class="category-badge bg-warning text-dark">
+                    <i class="fas fa-server category-icon"></i>OpenShift
+                  </span>
+                  <small class="text-muted"><?php echo $openshift["fecha"]; ?></small>
+                </div>
+                <h3 class="card-title">
+                  <a class="text-dark text-decoration-none" href="<?php echo $openshift['enlace']; ?>">
+                    <?php echo $openshift["titulo"]; ?>
+                  </a>
+                </h3>
+                <div class="author-info">
+                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="author-avatar" alt="Avatar">
+                  <div>
+                    <div class="font-weight-bold"><?php echo $openshift["autor"]; ?></div>
+                    <small class="text-muted">Especialista Kubernetes</small>
+                  </div>
+                </div>
+                <p class="card-text flex-grow-1">
+                  <?php echo $openshift["resumen"]; ?>
+                </p>
+                <div class="card-footer-custom text-center">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <a href="<?php echo $openshift['enlace']; ?>" class="btn btn-outline-warning btn-outline-custom">
+                      Leer más
+                    </a>
+                    <span class="read-time">5 min lectura</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Newsletter Section -->
       <div class="news-section">
         <div class="row justify-content-center">
